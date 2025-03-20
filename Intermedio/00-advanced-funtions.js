@@ -9,7 +9,7 @@ const greet = function (name) {
 greet("Brais")
 
 
-    // Una función que se le envía otra funcion por argumento
+// - Una función que se le envía otra funcion por argumento
 function processGreeting (greetFunction, name) {
     greetFunction(name) 
 }
