@@ -133,4 +133,62 @@ function factorial (n) {
 }
 console.log(factorial (5))
 
+// Funciones parciales
+// 
+
+function partialSum (a) {
+    return function (b, c) {
+        return sum(a, b, c)
+    }
+}
+
+const sumWith = partialSum(4)
+console.log(sumWith(2, 3))
+console.log(sumWith(8, 9))
+
+// Currying
+// Transformar una funcion que recibe varios argumentos en una secuencia de funciones que recibe un argumento de cada vez
+
+function currySum(a) {
+    return function (b) {
+        return function (c) {
+            return function (d) {
+                return sum (a, b, c, d)
+            }
+        }
+    }
+}
+
+const sumAB = currySum(1)(2)
+const sumC = sumAB(3)
+console.log(sumC(3))
+console.log(sumC(4))
+console.log(sumAB(5)(7))
+
+
+// Callbacks
+// A una función le pasamos una función como argumento y personalizamos su funcionamiento
+
+function processData (data, callback) {
+    const result = sum(...data)
+    callback(result)
+}
+
+function processResult(result) {
+    console.log(result)
+}
+
+function processResult2(result) {
+    console.log(`Mi resultado es: ${result}`)
+}
+
+processData([1, 2, 3], processResult)
+processData([1, 2, 3], processResult2)
+processData([1, 2, 3], (result) => {
+    console.log(`Mi resultado en la arrow function es: ${result}`)
+})
+
+
+
+
 
